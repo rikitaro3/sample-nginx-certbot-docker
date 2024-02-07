@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  certbot:
+    image: certbot/certbot
+    container_name: certbot_sample
+    volumes:
+      - ./data/certbot/www:/var/www/certbot # HTTPチャレンジ
+      - ./data/certbot/live:/etc/letsencrypt/live  # 証明書出力ディレクトリ
+    depends_on:
+      - nginx
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_sample
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./data/nginx/conf.d:/etc/nginx/conf.d
+      - ./data/certbot/live:/etc/letsencrypt/live
+      - ./data/certbot/www:/var/www/certbot
+
