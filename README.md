@@ -8,7 +8,7 @@
 sudo docker-compose up -d --build
 
 1. 証明書作成  
-sudo docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot -d example.com --register-unsafely-without-email
+sudo docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot -d example.com --register-unsafely-without-email  
 ※ドメインは修正してください。
 
 1. app.confのSSL通信設定コメントアウトを外す
