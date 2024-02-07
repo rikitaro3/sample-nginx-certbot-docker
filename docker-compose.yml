@@ -7,6 +7,7 @@ services:
     volumes:
       - ./data/certbot/www:/var/www/certbot # HTTPチャレンジ
       - ./data/certbot/live:/etc/letsencrypt/live  # 証明書出力ディレクトリ
+      - ./data/certbot/archive:/etc/letsencrypt/archive  # 証明書アーカイブディレクトリ
     depends_on:
       - nginx
 
@@ -19,5 +20,5 @@ services:
     volumes:
       - ./data/nginx/conf.d:/etc/nginx/conf.d
       - ./data/certbot/live:/etc/letsencrypt/live
+      - ./data/certbot/archive:/etc/letsencrypt/archive  # 追加
       - ./data/certbot/www:/var/www/certbot
-
