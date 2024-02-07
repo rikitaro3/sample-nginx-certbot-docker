@@ -10,6 +10,8 @@ services:
       - ./data/certbot/archive:/etc/letsencrypt/archive  # 証明書アーカイブディレクトリ
     depends_on:
       - nginx
+    # 自動更新する場合、コメントアウト除外する
+    # entrypoint: /bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'
 
   nginx:
     image: nginx:latest

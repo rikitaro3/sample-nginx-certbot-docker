@@ -16,5 +16,8 @@ sudo docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/
 1. nginxリロード  
 sudo docker exec nginx_sample nginx -s reload
 
-# 証明書の自動更新
-WIP
+1. SSL証明書自動更新設定  
+docker-compose.ymlのentrypointのコメントアウト除外  
+
+1. certbot更新  
+sudo docker-compose up -d --build
